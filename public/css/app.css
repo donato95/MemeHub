@@ -1,0 +1,96 @@
+/* ========== Main rules ========== */
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #f5f5f5;
+}
+input::placeholder, textarea::placeholder {
+    font-size: 14px;
+}
+input[type="file"] {
+    font-size: 14px;
+}
+.disabled {
+    cursor: dis;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+.border-none {
+    border: unset;
+}
+.border-right {
+    border-right: 1px solid #ddd;
+}
+.circled {
+    border-radius: 50%;
+}
+.pointer {
+    cursor: pointer !important;
+}
+.text-sm {
+    font-size: 14px;
+}
+.w-6 {
+    width: 6%;
+}
+.w-10 {
+    width: 10%;
+}
+.w-15 {
+    width: 15%;
+}
+.dot {
+    background-color: #b5afaf;
+    width: 2px;
+    height: 2px;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 8px;
+}
+.object-contain {
+    object-fit: contain;
+}
+
+/* ========== Main rules ========== */
+.form {
+    width: 40%;
+}
+.form.login {
+    margin-top: 10% !important;
+}
+.from.register {
+    margin-top: 5%!important;
+}
+
+/* ========== Meme post rules ========== */
+.post {
+    transition: box-shadow .2s ease-in;
+}
+.post:hover {
+    box-shadow: 4px 4px 15px 0 rgba(36, 37, 38, 0.08);
+}
+.post .meme .dots {
+    right: 10px;
+    bottom: 10px;
+}
+.post .meme a span {
+    background-color: #b5afaf;
+    width: 5px;
+    height: 5px;
+    padding: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 2px;
+}
+.fa-bell {
+    cursor: pointer;
+}
+.user-nav .dropdown-menu {
+    width: 500px;
+}

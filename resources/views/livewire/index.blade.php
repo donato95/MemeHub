@@ -118,7 +118,7 @@
             </div>
             <div class="col-md-9">
                 <x-messages />
-                <x-filters />
+                <x-filters :categories="$categories" />
                 @forelse ($posts as $post)
                     <x-post :post="$post" />                                      
                 @empty

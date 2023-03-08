@@ -24,7 +24,7 @@ class Post extends Model
 
     // Relatioship with comments
     public function comments() {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
     }
 
     // Relationship with votes

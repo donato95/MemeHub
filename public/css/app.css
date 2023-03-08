@@ -44,6 +44,12 @@ input[type="file"] {
 .w-15 {
     width: 15%;
 }
+.w-40 {
+    width: 40%;
+}
+.w-50 {
+    width: 50%;
+}
 .dot {
     background-color: #b5afaf;
     width: 2px;
@@ -93,4 +99,10 @@ input[type="file"] {
 }
 .user-nav .dropdown-menu {
     width: 500px;
+}
+.comments {
+    
+}
+.comments .comment {
+
 }

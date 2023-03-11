@@ -52,4 +52,11 @@ class UserController extends Controller
         auth()->login($user);
         return redirect()->route('home')->with('message', 'Welcome to Memehub');
     }
+
+    public function logout(Request  $request) {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
+    }
 }

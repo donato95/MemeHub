@@ -38,7 +38,7 @@ class ShowPost extends Component
         $this->comment = NULL;
         $this->getComments();
         $this->post = $post;
-        session()->with('success', 'Comment added successfully');
+        session()->flash('success', 'Comment added successfully');
     }
 
     // Remove comment from post
@@ -46,7 +46,7 @@ class ShowPost extends Component
         $comment = Comment::findOrFail($id);
         $comment->delete();
         $this->post = $this->getPost($this->post->id);
-        session()->with('success', 'Comment removed successfully');
+        session()->flash('success', 'Comment removed successfully');
     }
 
     // Delete meme post

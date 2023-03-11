@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     // Show single post page
-    public function post(Post $post) {
+    public function post($lang, Post $post) {
         return view('main.post', compact('post'));
     }
 }

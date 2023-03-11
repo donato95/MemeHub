@@ -26,7 +26,7 @@
     </div>
         
     <div class="container">
-        <div class="my-3 user-nav d-flex align-items-center">
+        {{-- <div class="my-3 user-nav d-flex align-items-center">
             <div class="image w-6">
                 <img 
                     src="{{ asset('images/avatar.jpg') }}" 
@@ -52,19 +52,21 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row my-4">
             <div class="col-md-3">
                 <div class="bg-white p-2 rounded-3">
-                    <h5 class="text-center my-3">New Meme</h5>
-                    <p class="d-block text-sm px-2 text-center">Let's see your level, ready to roll? Share a meme now.</p>
+                    <h5 class="text-center my-3">{{ __('messages.new_meme') }}</h5>
+                    <p class="d-block text-sm px-2 text-center">
+                        {{ __('messages.meme_desc') }}
+                    </p>
                     <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-2">
                             <input 
                                 type="text" 
                                 name="title" 
-                                placeholder="Title" 
+                                placeholder="{{ __('messages.title') }}" 
                                 class="bg-light rounded-3 form-control border-none"
                                 wire:model.defer="title">
                             <div>
@@ -75,7 +77,7 @@
                         </div>
                         <div class="mb-2">
                             <select name="category" wire:model.defer="category" class="text-sm form-select border-none bg-light">
-                                <option value="0" class="text-sm">Chose category</option>
+                                <option value="0" class="text-sm">{{ __('messages.category') }}</option>
                                 <div>
                                     @foreach ($categories as $category)
                                         <option class="text-sm" value="{{ $category->id }}">
@@ -87,7 +89,7 @@
                         </div>
                         <div class="mb-2">
                             <textarea name="description" wire:model.defer="description"
-                                placeholder="Description" 
+                                placeholder="{{ __('messages.desc') }}" 
                                 class="form-control bg-light rounded-3 border-none" rows="4"
                             ></textarea>
                             <div>
@@ -111,7 +113,12 @@
                             
                         </div>
                         <div class="mb-3">
-                            <button type="submit" wire:click.prevent="store" class="btn btn-sm btn-primary text-white">Publish</button>
+                            <button 
+                                type="submit" 
+                                wire:click.prevent="store" 
+                                class="btn btn-sm btn-primary text-white">
+                                {{ __('messages.publish') }}
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -78,6 +78,9 @@ input[type="file"] {
 .post {
     transition: box-shadow .2s ease-in;
 }
+.post .vote {
+    border-right: 1px solid #ddd;
+}
 .post:hover {
     box-shadow: 4px 4px 15px 0 rgba(36, 37, 38, 0.08);
 }
@@ -99,10 +102,4 @@ input[type="file"] {
 }
 .user-nav .dropdown-menu {
     width: 500px;
-}
-.comments {
-    
-}
-.comments .comment {
-
 }

@@ -1,5 +1,5 @@
 <div class="post bg-white rounded-3 mb-3 d-flex">
-    <div class="vote p-4 text-center border-right">
+    <div class="vote p-4 text-center">
         <h4 
         @auth
             class={{ hasVoted($post->id) == true ? "text-primary mb-1": "text-muted mb-1" }}>        
@@ -9,14 +9,14 @@
             {{ postVotes($post->id) }}
         </h4>
         <span class="text-muted text-sm mb-2 d-block">
-            Votes
+            {{ __('messages.votes') }}
         </span>
         @auth            
             <button 
                 {{ hasVoted($post->id) == true ?"disabled": '' }}
                 wire:click.prevent="vote({{ $post->id }})" 
                 class="btn btn-primary btn-sm">
-                {{ hasVoted($post->id) == true ? "Voted": "Vote" }}
+                {{ hasVoted($post->id) == true ? __('messages.voted'): __('messages.vote') }}
             </button>
         @endauth
     </div>
@@ -39,11 +39,15 @@
                 <i class="fa fa-user"></i> {{ $post->user->username }}
             </a>
             <div class="post-related text-sm mt-">
-                <span class="text-muted">{{ $post->created_at->diffForHumans() }}</span>
+                <span class="d-inline-block text-muted">{{ $post->created_at->diffForHumans() }}</span>
                 <span class="dot"></span>
-                <span class="text-muted">{{ $post->category->title }}</span>
+                <span class="d-inline-block text-muted">{{ $post->category->title }}</span>
                 <span class="dot"></span>
-                <span><i class="fa fa-comment-o"></i> {{ $post->comments()->count() }} Replies</span>
+                <span class="d-inline-block">
+                    <i class="fa fa-comment-o"></i> 
+                    {{ $post->comments()->count() }} 
+                    {{ __('messages.replies') }}
+                </span>
             </div>
         </div>
         @auth            

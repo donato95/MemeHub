@@ -6,12 +6,12 @@
             <textarea 
                 name="comment" 
                 cols="10" rows="4" 
-                placeholder="Reply..."
+                placeholder="{{ __('messages.reply') }}..."
                 class="form-control bg-light mb-3"
                 wire:model.defer="comment"
             ></textarea>
             <button wire:click.prevent="addComment({{ $post->id }})" type="submit" class="btn btn-sm btn-primary">
-                Reply
+                {{ __('messages.reply') }}
             </button>
         </form>
     </div>
@@ -30,13 +30,17 @@
                         <p class="text-sm mb-1">
                             {{ $comment->content }}
                         </p>
-                        <a wire:click.prevent="removeComment({{ $comment->id }})" href="#" class="tex-primary d-block">Delete</a>
+                        <a 
+                            wire:click.prevent="removeComment({{ $comment->id }})" 
+                            href="#" class="tex-primary d-block">
+                            {{ __('messages.delete') }}
+                        </a>
                     </div>
                 </div>
             </div>
         @empty
             <div class="bg-white p-2 rounded-3 text-center">
-                No comments
+                {{ __('messages.no_comments') }}
             </div>  
         @endforelse
     </div>

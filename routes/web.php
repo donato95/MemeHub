@@ -25,16 +25,20 @@ use Illuminate\Support\Facades\Route;
 // }
 // App::setLocale($lang);
 
-Route::get('/{lang}/switch/{langu}', function($lang, $langu) {
-    // public function switch($lang) {
-        if(!in_array($langu, ['en', 'ar'])) {
-            App::setLocale('en');
-        }
-        App::setLocale($langu);
-        return redirect()->route('home');
-})->name('switch');
+// Route::get('/{lang}/switch/{langu}', function($lang, $langu) {
+//     // public function switch($lang) {
+//     app()->setLocale($langu);
+//     session()->put('lang', $langu);
+//     return redirect()->back(); //route('home', ['lang'=>$langu]);
+// })->name('switch');
 
 Route::prefix('/{lang}')->middleware('setLocal')->group(function($lang) {
+
+    Route::get('/switch-to/{language}', function($lang, $language) {
+        app()->setLocale($language);
+        session()->put('lang', $language);
+        return redirect()->back();
+    })->name('switch');
 
     Route::middleware('auth')->group(function() {
         Route::get('/', function() {

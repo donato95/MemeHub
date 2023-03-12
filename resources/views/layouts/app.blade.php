@@ -21,10 +21,27 @@
             @yield('main')
         </main>
 
-        <footer class="container bg-white rounded-3 text-center mt-4 p-4">
-            <a href="{{ route('switch', ['lang'=>'ar']) }}" class="m-1">العربية</a>
-            <a href="{{ route('switch', ['lang'=>'en']) }}" class="m-1">English</a>
-        </footer>
+        <div class="settings container position-absolute d-flex flex-column">
+            <a 
+                href="{{ route('switch', ['lang'=>App::currentLocale(), 'language'=>'ar']) }}" 
+                class="mb-2 d-block">
+                <img 
+                    src="{{ asset('images/arabic.png') }}" 
+                    class="rounded-circle" width="30px" height="30px">
+            </a>
+            <a 
+                href="{{ route('switch', ['lang'=>App::currentLocale(), 'language'=>'en']) }}" 
+                class="mb-2 d-block">
+                <img 
+                    src="{{ asset('images/english.png') }}" 
+                    class="rounded-circle" width="30px" height="30px"/>
+            </a>
+            @auth
+            <a href="{{ route('logout') }}" class="d-block">
+                <img src="{{ asset('images/logout.png') }}" class="" width="30px" height="30px"/>
+            </a>
+            @endauth
+        </div>
 
         {{-- Bootstrap Js --}}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

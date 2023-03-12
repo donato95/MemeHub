@@ -23,7 +23,7 @@
     <div class="meme p-2 d-flex align-items-start position-relative w-100">
         <div class="image w-15 h-100">
             <a 
-                href="#" 
+                href="{{ route('post', ['lang'=>App::currentLocale(), 'post'=>$post->id]) }}" 
                 wire:click.prevent="showMeme({{ $post->id }})" 
                 data-bs-toggle="modal" data-bs-target="#showMeme">                
                 <img 
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="ms-2">
-            <a href="{{ route('post', ['post'=>$post->id]) }}" class="text-dark">
+            <a href="{{ route('post', ['lang'=>App::currentLocale(), 'post'=>$post->id]) }}" class="text-dark">
                 <h6 class="my-1">{{ $post->title }}</h6>
             </a>
             <a href="#" class="d-block mb-1 text-sm">
@@ -62,7 +62,7 @@
                                     class="dropdown-item" 
                                     href="#"
                                     wire:click.prevent="deletePost({{ $post->id }})">
-                                    <i class="fa fa-trash"></i> Delete
+                                    <i class="fa fa-trash"></i> {{ __('messages.delete') }}
                                 </a>   
                             </li>
                     </ul>

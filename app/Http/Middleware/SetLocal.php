@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
 class SetLocal
@@ -19,11 +20,14 @@ class SetLocal
     public function handle(Request $request, Closure $next)
     {
         $lang = $request->segment(1);
-        if (!in_array($lang, ['en', 'ar'])) {
-            $lang = 'en';
+        if ($lang && !in_array($lang, config('app.avalble_langs'))) {
+            $lang = config('app.fallback_locale');
         }
-        App::setLocale($lang);
-        URL::defaults(['lang'=>$lang]);
+
+        if(Session::has('lang')) {
+            URL::defaults(['lang'=>$lang]);
+            App::setLocale(Session::get('lang'));
+        }
         return $next($request);
     }
 }

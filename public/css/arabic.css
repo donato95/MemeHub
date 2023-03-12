@@ -22,3 +22,12 @@ select {
     right: unset;
     left: 10px;
 }
+.settings {
+    right: 58px;
+}
+.comments .meme div.d-flex {
+    margin-right: 10px;
+}
+.dots .dropdown-menu {
+    text-align: right;
+}

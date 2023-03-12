@@ -16,6 +16,13 @@
         </form>
     </div>
     <div class="comments mt-3">
+        <div wire:loading>
+            <div class="d-flex justify-content-center p-4">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
         @forelse ($comments as $comment)
             <div class="bg-white rounded-3 mb-2 comment">
                 <div class="meme p-2 d-flex align-items-start position-relative w-100">
@@ -32,7 +39,8 @@
                         </p>
                         <a 
                             wire:click.prevent="removeComment({{ $comment->id }})" 
-                            href="#" class="tex-primary d-block">
+                            href="#" class="text-danger d-block">
+                            <i class="fa fa-trash text-danger"></i> 
                             {{ __('messages.delete') }}
                         </a>
                     </div>

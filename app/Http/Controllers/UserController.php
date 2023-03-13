@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerifyMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -23,7 +26,7 @@ class UserController extends Controller
 
         if(Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect()->route('home');
+            return redirect()->route('home', App::getLocale());
         }
 
         return back()->with('danger', 'Wrong credentials')->onlyInput('email'); 
@@ -50,13 +53,34 @@ class UserController extends Controller
             'password' => $data['password']
         ]);
         auth()->login($user);
-        return redirect()->route('home')->with('message', 'Welcome to Memehub');
+        return redirect()->route('home', App::getLocale())->with('message', 'Welcome to Memehub');
+    }
+
+    public function verify() {
+        return view('auth.verify');
+    }
+
+    public function send(Request $request) {
+        $data = $request->validate(['email'=>'required|string|email']);
+        $token = bin2hex($data['email']);
+        $user = User::query()->where('email', $data['email'])->first();
+        $user->update([
+            'email_token' => $token,
+        ]);
+        Mail::to($data['email'])->send(new VerifyMail($user));
+        return redirect()->route('home', App::getLocale())->with('success', 'Token been sent to your email');
+    }
+
+    public function verfication($lang, $token) {
+        $user = User::query()->where('email_token', $token)->first();
+        $user->update(['email_verify'=>1]);
+        return redirect()->route('home', App::getLocale())->with('success', 'Email verified.');
     }
 
     public function logout(Request  $request) {
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home');
+        return redirect()->route('home', App::getLocale());
     }
 }

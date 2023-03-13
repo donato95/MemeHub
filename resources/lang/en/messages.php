@@ -24,5 +24,7 @@ return [
     'all' => 'All',
     'filter' => 'Filter',
     'search' => 'Search',
-    'top' => 'Top voted'
+    'top' => 'Top voted',
+    'send' => 'Send',
+    'verify' => 'Verify email'
 ];

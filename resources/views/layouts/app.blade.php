@@ -37,7 +37,7 @@
                     class="rounded-circle" width="30px" height="30px"/>
             </a>
             @auth
-            <a href="{{ route('logout') }}" class="d-block">
+            <a href="{{ route('logout', ['lang'=>App::currentLocale()]) }}" class="d-block">
                 <img src="{{ asset('images/logout.png') }}" class="" width="30px" height="30px"/>
             </a>
             @endauth

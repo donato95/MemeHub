@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container">
-        <a href="{{ route('home') }}" class="my-2 btn btn-sm btn-outline-primary">BACK</a>
+        <a href="{{ route('home', App::getLocale()) }}" class="my-2 btn btn-sm btn-outline-primary">BACK</a>
         <div class="row">
             <div class="col-md-3 author">
                 <div class="bg-white p-2 rounded-3 text-center">

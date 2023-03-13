@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="form register bg-white p-3 shadow rounded-3 mx-auto mt-5">
-        <form action="{{ route('store-user') }}" method="POST">
+        <form action="{{ route('store-user', App::getLocale()) }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="name" class="form-label">Your Name</label>
@@ -43,7 +43,7 @@
             </div>
             <div class="mb-3 d-flex justify-content-between">
                 <button type="submit" class="btn btn-sm bg-dark text-white">Register</button>
-                <a href="{{ route('login') }}" class="">
+                <a href="{{ route('login', App::getLocale()) }}" class="">
                     Already have account?
                 </a> 
             </div>
